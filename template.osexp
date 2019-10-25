@@ -1,0 +1,1108 @@
+---
+API: 2.1
+OpenSesame: 3.2.8
+Platform: nt
+---
+set width 1024
+set uniform_coordinates yes
+set title "Form template"
+set subject_parity even
+set subject_nr 0
+set start experiment_sequence
+set sound_sample_size -16
+set sound_freq 48000
+set sound_channels 2
+set sound_buf_size 1024
+set sampler_backend legacy
+set round_decimals 2
+set mouse_backend legacy
+set keyboard_backend legacy
+set height 768
+set fullscreen no
+set form_clicks no
+set foreground black
+set font_underline no
+set font_size 20
+set font_italic no
+set font_family sans
+set font_bold no
+set experiment_path "C:\\Users\\frini\\Dropbox\\Jobs\\Forschung\\Forschungspraktikum\\questionnaires\\sesamescripts\\Frageboegen"
+set disable_garbage_collection yes
+set description "A simple template for form-based questionnaires"
+set coordinates relative
+set compensation 0
+set color_backend legacy
+set clock_backend legacy
+set canvas_backend legacy
+set bidi yes
+set background white
+
+define sketchpad End
+	set duration keypress
+	set description "Präsentiert Stimuli"
+	draw textline center=1 color=black font_bold=no font_family=sans font_italic=no font_size=34 html=yes show_if=always text="PLEASE CONSULT THE STUDY MANAGEMENT" x=0 y=0 z_index=0
+
+define inline_script GENERAL_INFO
+	set description "Executes Python code"
+	___run__
+	#############################################################################
+	##################  GENERAL INFORMATION ABOUT THIS SCRIPT  ##################
+	#############################################################################
+	
+	
+	##############
+	### HOW TO ###
+	##############
+	#I recommend to first read MISCELLANEOUS and RELEVANT ITEMS, then click on the green triangle above to run the experiment sequence to see what the possibilities are. Afterwards, when you have figured out which part of this template you want to use/adapt or also if you want to have a look at all the possibilities, go to ABOUT THIS EXPERIMENT SECTION below to read a brief explanation of every item in this template.
+	#If you have never ever set up a questionnaire with OpenSesame before and want to do one (with single choice questions), I recommend to go through a_simple_form first. Recode_answers, another_form, another_form2 and dependency_and_preselection are extensions on a_simple_form and stuff that is explained in a_simple form is not explained in those extensions anymore (for clarity's sake).
+	
+	# Please note: This template was created with the German Version of OpenSesame. Therefore some functions of the programm are loose translations and might not represent the terms in the English version of the Software.
+	
+	
+	
+	
+	##############################
+	### MISCELLANEOUS / BASICS ###
+	##############################
+	# text behind hashtags are notes and explanations, this code won't be executed!
+	
+	# all variables used in an experiment (and also their values) can be viewed in the variable inspector. open the variable inspector with [ctrl + i]
+	
+	# if you want to look at the whole script in code, you can click on "general script" in the form template item. This is also very useful if you want to copy paste items (or even whole sequences) to another OpenSesame file. 
+	
+	# always remember that python starts indexing with 0, not with one!
+	# you will see this e.g. when you set up a form with x rows; the first row will be referred to with a 0!
+	
+	# if you are working on your own questionnaire or experiment, try to run your script from time to time, even though it is not finished yet. This makes debugging way more easy and efficient!
+	
+	
+	
+	######################
+	### RELEVANT ITEMS ###
+	######################
+	# =>different squares on the left; drop & drag them below the form template to create a new sequence
+	# you'll find anything about items on https://osdoc.cogsci.nl/2.8.3/usage/items/
+	# The following is just an overview on the items used in this experiment
+	
+	### LOOP ITEM ### (green item with raster)
+	# The loop item is used to loop items - meaning it runs the items in the loop multiple times, probably with individual values changing (such as titles, questions, etc.). 
+	# Everything you want to change per trial is specified in this item. You can also specify in what order you want to run the trials within the loop or how often you want to repeat the items. 
+	# In this experiment there is one example workin with a loop. Details are explained in "loop_example" and the items underneath.
+	
+	### SEQUENCE ITEM ### (with green arrow that points downwards):
+	# creates an experiment sequence. Contains all items used in the sequence. If necessary, you can choose conditions under which a certain item is executed (eg. var1 == 1; corresponding item is only executed if the variable "var 1" is equal to 1). Default: always
+		
+	### SKETCHPAD ### (item in rainbow colours):
+	# is used to display pictures, text etc. freely on a blank page without any programming effort!
+	# In this script it's also used to make it easier for the subject to separate the items from each other when displayed (see "BLANK" below).	
+	
+	### MOUSE RESPONSE ### (pink item with a mouse):
+	# With this item, one can track mouse clicks. In our sequence this item is used to collect the responses in a task in which the subject has to click on words on a sketchpad. 
+	
+	### LOGGER ITEM ### (Blue item with white arrow pointing downwards):
+	# A very important item! It is used to specify the variables which should be written to the output file.
+	# You can either choose "log all Variables" or specify a variable list by your own (with "add custom variable"). =>just type in the variable names
+	
+	### INLINE SCRIPT ### (blue / yellow cross):
+	# for programming items with python (or OpenSesame) code
+		
+	### FORM TEXT DISPLAY ### (orange item with white lines):
+	# used to display text (usually instructions) 
+		
+	### FORM TEXT INPUT ### (orange with "AbI"/"AI" written on):
+	# is used to present an open question
+	
+	
+	
+	######################################
+	### ABOUT THIS EXPERIMENT SEQUENCE ###
+	######################################
+	
+	### FORM TEMPLATE ###
+	# specify general values like font size which apply to the whole experiment
+	
+	### EXPERIMENT_SEQUENCE ###
+	# every OpenSesame experiment starts with a sequence. Every item you drag and drop to your sequence is displayed in here. Also, conditions can be applied to the items (=>execute when; you'll find an example in dependency_and_preselection)
+	
+	### LOGGED_INFO ###
+	# we used this inline script to specify certain output variables. In this sequence, we created two extra variables we wanted to log in the output file. (optional)
+		
+	### INSTRUCTIONS ###
+	# a very easy-to-handle item to set up the experiment instructions
+	
+	### BLANK ###
+	# All the "blanks" in this script are used to make it easier for the subject to separate the items from each other when displayed 
+		
+	### OPEN_QUESTION ###
+	# a short explanation on how to set up open questions (incl. logging)
+		
+	### A_SIMPLE_FORM ###
+	# This inline script contains a simple form with single choice questions. The code might not look simple at first, but everything is explained very detailed
+	
+	### RECODE_ANSWERS ###
+	# This is an additional tool for forms. For the basics, consult "a_simple_form"
+	# per default, the answers to single choice questions are logged as follows:
+		# first answer option = 0, second answer option = 1, third answer option = 2, etc.
+	# sometimes you might want it the other way around, e.g. when you have inverse items or it can be important for your analysis that the first answer option is coded with a 1 and not with a 0
+	# this problem is easy to handle with an addition of a function to your inline script. How it is done, is explained in this item
+	# CAUTION: If you run the experiment and don't choose an answer, the experiment is going to break down! If you want to prevent this error, check out the validator function in a_simple_form
+	
+	### ANOTHER_FORM ###
+	# this is another example of a simple questionnaire - just to show different ways to work with the different elements of a form
+	
+	### ANOTHER_FORM2 ###
+	# again, this item is just another example of how you can display a questionnaire in OpenSesame. All code elements are explained in a_simple_form
+	
+	### SLIDER ###	
+	# sliders can be used as visual analog scales. They are set up a bit differently from the forms we have seen before
+	
+	### DEPENDENCY_AND_PRESELECTION ### 
+	# For some questionnaires it is not necessary that every participant answers every question. For example if a subject replys "never" on "have you ever smoked weed before?" he doesn't need to answer a further question about the number of occasions.
+	# In this case the ideal sequence-solution is to not even display the second question on the same topic. This is the main problem we cover in the sequence "dependency_and_preselection". 
+	# In this particular sequence item we define the cases in which a question is displayed. In our example we have a question 14a (that every subject has to answer) and a further dependent question on the same topic 14b. The second question should not be displayed if the participant answers with "never" (first node; value = 0) on 14a. If he doesn't, 14b is displayed and needs to be answered by the participant. 
+	# This is obtained by stating that seq_14B should only be executed with [q14a]!=0 (variable q14a is not = 0).
+	
+	### QUESTION_14A ### 
+	# This is the first item of our dependency_and_preselection sequence. It is a normal form as we e.g. have seen it in a_simple_form
+	
+	### QUESTION_14B ### 
+	# This is the second item of the dependency_and_preselection sequence. Since the subject should get the impression that this part of the question is displayed on the same screen as the first one, it contains question_14A again. In its rating scale, the already given answer is preselected.
+	
+	### LOGGER ###
+	# With this logger we specify which of the information we have gathered so far we want to write into our output file.
+	# You can either click on "protocol all the variables" or define your own list of variables which should be logged by simply click on "add custom variable" and type in the variable's name
+	
+	### DEFINE_CONDITION ###
+	# with Opensesame it is possible to create a custom logfile with a custom name. In this template we create one for the loop example. define_condition is filled out by the study management and asks for the condition of the participant, which will be written to the log file's name in "custom_logfile" later.
+	# usually this kind of item is sited at the beginning of an experiment so the study management can fill it out and only after let the participant fill out the questionnaire. 
+	# More information about this particular type of item is given in "open_question"
+	
+	### CUSTOM_LOGFILE_PRELIMINARIES ###
+	# Since sometimes it is helpful to create your very own logfile, this is demonstrated with the following loop. 
+	# We start with some preliminaries; we close the old and open a new log file and name it. 
+	# The other relevant item for the creation of the logfile is called "custom_logfile"
+	
+	#### LOOP_EXAMPLE ###
+	# This item is the start to a more complex experiment sequence. With the help of loops, we create a different kind of experiment in comparison to what we have seen so far. 
+	# To give an example of how to use this instrument: We did a verbal IQ task with it, in which out of 5 words (4 of them made up), people had to choose the real one
+	# items we want to display on a sketchpad later are defined in loop_example . 
+		# each row stands for one item
+		# each column stands for one place holder we are displaying on the sketchpad later
+	
+	### LOOP_SEQUENCE ###
+	# in order to add multiple elements, one has to put a sequence item after a loop 
+	
+	### DEFINE_LOOP_OUT ###
+	# we added this element and the security_loop to prevent the subject from skipping answering by clicking on the white background 
+	# the logic behind this is, that the steps within the security_loop are repeated until the variable "out" (defined in this inline script) turns to 1 (which happens as soon as the participant choses a valid answer)
+	
+	### SECURITY_LOOP ###
+	# this loop within a loop repeats the current item (in this case: a set of 5 words)
+	# in our example the loop gets stopped as soon as the participant has clicked on one of the possible answers
+	# this is controlled by a variable 'out', which gets defined in security_check
+	# in security_loop, write [out]==1 in the field after "end, if" so the loop repeats itself until the variable 'out' turns to 1
+	# Make sure the loop gets repeated enough times ("repeat each trial"-menu) so it's not possible for the participant to leave the loop before answering. (in our example one would have to click on the white background 300 times!)
+	
+	### LOOP2_SEQUENCE ###
+	# again, if you want to put multiple elements within a loop, you need a sequence item
+	
+	### WORDS_DISPLAY ###
+	# with this sketchpad item, we define how the words defined in loop_example should be displayed
+	# this tool is very easy to handle and does not require coding, just click on the text symbol on the left and place your text wherever you want it to be displayed.
+	# the words that change from trial to trial are encased with square brackets ([word1], [word2], etc.)
+	# don't forget to name the column titles in loop_example after those names! (word1, word2, etc.)
+	
+	### NEW_MOUSE_RESPONSE ###
+	# with this item one can collect the reaction of a mouse in a certain item
+	# in our case, it's the mouse responses in words_display we want to track
+	# you can choose the sketchpad you want to track the mouse in with the dropdown menu of the field "linked sketchpad"
+	# all other options in this item are not relevant for our cause. (e.g. right reaction is only needed if there are correct and incorrect answers)
+	
+	### SECURITY_CHECK ###
+	# in this inline script we check whether the participant has clicked on an answer
+	# if he or she did, we set the [out]-variable to 1, so the security loop can come to an end
+	
+	### CUSTOM_LOGFILE ###
+	# in this inline script we create the variables we want to log and write them in our custom logfile
+	# Important: Don't include this logfile in the security_loop! Otherwise trials in which the participant misses to click on a variable are logged too. This can lead to messed data.
+	
+	### LOGCLOSE ###
+	# You should always close open files you're writing to!
+	# more on this: https://stackoverflow.com/questions/25070854/why-should-i-close-files-in-python
+	
+	### END ###
+	# This sketchpad is very optional. We simply wanted to close the experiment by ourselves. Thus subjects are told to wait for the study management, which then closes the experiment by a keypress (stated in the field "durance" above the sketchpad)
+	__end__
+	set _prepare ""
+
+define inline_script a_simple_form
+	set description "Executes Python code"
+	___run__
+	###############################
+	### let's do a custom form! ###
+	###############################
+	
+	# we start off with a form validator. This function checks whether all questions have been answered.
+	def form_validator():
+		options = [0,1]
+		return var.q01 in options and var.q02 in options and var.q03 in options and var.q04 in options 
+	# we will later include this validator in the form. This results in an impossibility for the subject to continue to the next screen without having answered all questions.
+	# if you don't need this function, simply delete it
+	# On the details:
+	# first you have to define the options. Add an integer for every possible answer of your question. Start with a zero, continue with a 1, 2, 3, etc. For example if your questions have 5 possible answers, type in "0, 1, 2, 3, 4"
+	# then change the variable names (var.XXX) to the ones you chose for the rating scales (explained later in this script). In this example, the variables are calles "q01", "q02", "q03" and "q04"
+				
+			
+	
+	# if you like, you can add a title to your form
+	title = Label(text=u'<b>title</b>')
+	# just change the yellow word "title" to your desired title
+	# the b's in the brackets make your title bold. you can remove those if you want.
+	
+	
+	# we now set up the single choice questions you'd like to ask your participant
+	q1 = Label(text=u'Do you feel good today?', center=False)
+	q2 = Label(text=u'Do you have a netflix account?', center=False)
+	q3 = Label(text=u'Do you own any pets?', center=False)
+	q4 = Label(text=u'Do you like pineapple on your pizza?', center=False)
+	# again change the yellow text to your desired questions
+	# via the "center"-function you can specify whether your questions should be displayed left-aligned (=False) or centered (=True)
+	
+	# define the answer options
+	ratingScale1 = RatingScale(
+		var=u'q01',
+		nodes=[u'no', u'yes']
+		)
+	ratingScale2 = RatingScale(
+		var=u'q02',
+		nodes=[u'no', u'yes']
+		)
+	ratingScale3 = RatingScale(
+		var=u'q03',
+		nodes=[u'no', u'yes']
+		)
+	ratingScale4 = RatingScale(
+		var=u'q04',
+		nodes=[u'no', u'yes']
+		)	
+	# via the RatingScale function, you can define your answer options. again just change the yellow text. 
+	# with var=u'q1' you can change the name of the response variable. Choose a unique name so nothing ever gets overwritten. Don't forget to update the variable names in the form validator and add the variables to the logger item. 
+	# with nodes=[u'xxx', u'xxx'] you define the answer options. just change the "no" and "yes" to your desired answers. If you want to add any more answers, just add more in the following form: u'xxx'
+				
+	# with the following code, you define the text on your next button
+	nextButton = Button(text=u'next')
+	# just change the yellow text to your desired text
+	
+	#now we are finally ready to build the form
+	form = Form(validator=form_validator, rows=[1,1,1,1,1,1], cols=[5,2], margins=(40,40,40,40), spacing=25) 
+	#this might seem complicated at first, but once understood, it's very easy to handle
+	
+	###VALIDATOR###:
+	# if you want to use a validator function (as defined in the beginning of this script), you have to call it at this point. The validator function makes sure that the participant chose an answer on each question. Otherwise it's not possible to continue with the sequence.
+	
+	###ROWS & COLS###: 
+	# imagine the whole display of this page being designed as a grid. With rows and cols you define how the grid is partitioned. There is a picture of this on https://osdoc.cogsci.nl/3.2/manual/forms/custom/ . the more numbers you type in the brackets behind rows or cols, the more rows and cols will be created.
+	# if you want to enlargen a specific row or column, just type in a higher number at the correct position.
+	# for example if you first use a 1 four times and then a 2 one time, the last row (or column) will be twice as large as the four before. 
+	# MAKE SURE YOU CREATE ENOUGH ROWS AND COLS FOR EVERY OBJECT YOU WANT TO DISPLAY IN YOUR FORM! Otherwise the experiment won't be executed completely.
+	
+	### MARGINS ###
+	# with margins one can set the margins on the top (first number), right (second number), bottom (third number) and left (fourth number) of the screen. This is very useful for preventing the widgets (the fields within the grid) from touching the edges of the display. The numbers indicate the number of pixels between the edge and the widget
+	
+	### SPACING ###
+	# with spacing one makes sure, that the content of different widgets don't overlay. the higher the spacing, the more narrow the widgets. You sometimes will have to play around a bit with these numbers. Don't hesitate to try things out until everything looks how you want it to look like.
+			
+	# now as the basic shape of the form is built, we fill in the widgets with our prebuilt elements such as questions, titles, rating scales and buttons
+	form.set_widget(title, (0, 0), colspan=2)
+	form.set_widget(q1, (0, 1)) 
+	form.set_widget(q2, (0, 2))
+	form.set_widget(q3, (0, 3))
+	form.set_widget(q4, (0, 4))
+	form.set_widget(ratingScale1, (1, 1))
+	form.set_widget(ratingScale2, (1, 2))
+	form.set_widget(ratingScale3, (1, 3))
+	form.set_widget(ratingScale4, (1, 4))
+	form.set_widget(nextButton, (0, 5), colspan=2)
+	# We do this for each element we want to place in the col/row grid with form.set_widget 
+	# the numbers in the brackets indicate the placement in the grid. The first number specifies the column,  the second number the row
+	# e.g. (1,3) means an object is placed in the widget located in the second column and fourth row (friendly reminder: in python indexing starts with a 0!!)
+	# the object names are written in white. Make sure you use the exact same names as above where you defined the elements (title, q1, q2, ratingScale1, nextButton, etc.)
+	# very useful for designing your form is colspan. with this command you can place an element over a colspan of more than one column. e.g. if colspan is = 2, the element you're setting up is placed on 2 cols
+			
+	# last but not least: execute the form! 
+	form._exec()
+		
+		#done! :)
+	__end__
+	set _prepare ""
+
+define inline_script another_form
+	set description "Executes Python code"
+	___run__
+	###########################
+	### Another form design ###
+	###########################
+	
+	# please consult "a simple form" or "recode answer" for more detailed information on how to set up a form. The purpose of this inline script is to show another example of what a questionnaire can look like.
+	
+	# The following chunk is another example of a function which recodes the response variable 
+	def recode_response_2(r):
+		original_response = self.get(r)
+		response_codes = {
+			6 : 1,
+			5 : 2,
+			4 : 3,
+			3 : 4,
+			2 : 5,
+			1 : 6,
+			0 : 7}
+		exp.set(str(r), response_codes[original_response])
+		return(r)
+	# more information about this can be obtained in recode_answers
+		
+	# all of the following lines of code are explained in a_simple_form. They are just used with different parameters
+	def form_validator():
+		options = [0,1,2,3,4,5,6]
+		return var.q07 in options and var.q08 in options and var.q09 in options
+	
+	# set up all text elements
+	title = Label(text=u'How are you feeling <b>right now</b>?')
+	
+	yes = Label(text=u'STRONGLY AGREE', center=False)
+	no = Label(text=u'STRONGLY DISAGREE', center=False)
+	
+	q1 = Label(text=u'<b>I am happy</b>')
+	q2 = Label(text=u'<b>I am sad</b>')
+	q3 = Label(text=u'<b>I am angry</b>')
+	
+	# set up the rating scales
+	ratingScale1 = RatingScale(
+		var = u'q07',
+		nodes=[u'', u'', u'', u'', u'', u'', u'']
+		)
+	
+	ratingScale2 = RatingScale(
+		var = u'q08',
+		nodes=[u'', u'', u'', u'', u'', u'', u'']
+		)
+		
+	ratingScale3 = RatingScale(
+		var = u'q09',
+		nodes=[u'', u'', u'', u'', u'', u'', u'']
+		)
+		
+	# set up the next button	
+	nextButton = Button(text=u'Weiter')
+	
+	# build the form
+	form = Form(validator=form_validator, rows=[2,1,1,1,1,1,1,1,1,1,1], cols=[1,2,1], margins=(30,10,30,10), spacing=13) 
+	# In this matrix There are 11 rows, the first one being twice as high as the others (for the title).
+	# There are only 3 columns with the second one being twice as wide as the other two
+	
+	form.set_widget(title, (1, 0))
+	form.set_widget(yes, (0, 2)) 
+	form.set_widget(no, (2, 2))
+	form.set_widget(yes, (0, 5)) 
+	form.set_widget(no, (2, 5))
+	form.set_widget(yes, (0, 8)) 
+	form.set_widget(no, (2, 8))
+	
+	form.set_widget(ratingScale1, (1, 2))
+	form.set_widget(ratingScale2, (1, 5))
+	form.set_widget(ratingScale3, (1, 8))
+	
+	form.set_widget(q1, (1,1))
+	form.set_widget(q2, (1,4))
+	form.set_widget(q3, (1,7))
+	
+	form.set_widget(nextButton, (1, 10))
+	
+	form._exec() #execute the form
+	
+	
+	# The following three lines of code are explained in recode_answers
+	recode_response_2('q07')
+	recode_response_2('q08')
+	recode_response_2('q09')
+	__end__
+	set _prepare ""
+
+define inline_script another_form2
+	set description "Executes Python code"
+	___run__
+	#############################
+	### Another form design 2 ###
+	#############################
+	
+	# please consult "a simple form" for more detailed information on how to set up a form. The purpose of this inline script is to demonstrate another example of what a questionnaire can look like.
+	
+	# set up all text elements
+	title_left = Label(text=u'<b>LAST WEEK</b>') # <b> for bold text, </b> = end of bold text
+	title_right = Label(text=u'<b>THE LAST 2 WEEKS</b>', center=False)
+	
+	node1 = Label(text=u'never')
+	node2 = Label(text=u'on 1 to 2 days')
+	node3 = Label(text=u'on 3 to 4 days')
+	node4 = Label(text=u'on 5 to 7 days')
+	node5 = Label(text='almost every day during the last 2 weeks', center=False)
+	
+	q1 = Label(text=u'I played cardgames', center=False)
+	q2 = Label(text=u'I played computer games', center=False)
+	q3 = Label(text=u'I played soccer', center=False)
+	
+	# set up the rating scales
+	ratingScale1 = RatingScale(
+		var=u'q10',
+		nodes=['', '', '', '', ''] 
+		)
+	# We don't want the individual nodes to contain any description since it is written on top - so we just leave them empty
+	ratingScale2 = RatingScale(
+		var=u'q11',
+		nodes=['', '', '', '', '']
+		)
+	ratingScale3 = RatingScale(
+		var=u'q12',
+		nodes=['', '', '', '', '']
+		)
+	
+	# set up the next button
+	nextButton = Button(text=u'Weiter')
+	
+	# build the form
+	form = Form( rows=[1,1,1,1,1,1], cols=[6,3,3,3,3,3,1], margins=(5,5,5,5), spacing=23) 
+	# In this matrix There are 6 rows (all with the same height) and 7 columns, the first one being twice as wide as the following 5 and the last one being way smaller. 
+		
+	# filling the widgets with the elements we set up above
+	form.set_widget(title_left, (2, 0), colspan = 2)
+	form.set_widget(title_right, (5, 0), colspan = 2)
+	
+	form.set_widget(node1, (1, 1))
+	form.set_widget(node2, (2, 1))
+	form.set_widget(node3, (3, 1))
+	form.set_widget(node4, (4, 1))
+	form.set_widget(node5, (5, 1), colspan=2)
+	
+	form.set_widget(q1, (0, 2)) 
+	form.set_widget(q2, (0, 3))
+	form.set_widget(q3, (0, 4))
+	
+	form.set_widget(ratingScale1, (1, 2), colspan = 5)
+	form.set_widget(ratingScale2, (1, 3), colspan = 5)
+	form.set_widget(ratingScale3, (1, 4), colspan = 5)
+	form.set_widget(nextButton, (2, 5), colspan = 2)
+	
+	form._exec() # execute the form
+	__end__
+	set _prepare ""
+
+define sketchpad blank
+	set duration 8000
+	set description "Präsentiert Stimuli"
+	draw textline center=1 color=black font_bold=no font_family=sans font_italic=no font_size=20 html=yes show_if=always text="We used these blank sketchpads for making it more clear to the participant that the questionnaire is changing to another page. This is optional of course." x=0 y=-256 z_index=0
+	draw textline center=1 color=black font_bold=no font_family=sans font_italic=no font_size=20 html=yes show_if=always text="In the field duration above you can specify how long the sketchpad should be shown (in milliseconds or keypress for a display until a keypress happens)" x=0 y=-128 z_index=0
+
+define sketchpad blank1
+	set duration 2
+	set description "Präsentiert Stimuli"
+
+define sketchpad blank2
+	set duration 2
+	set description "Präsentiert Stimuli"
+
+define sketchpad blank3
+	set duration 2
+	set description "Präsentiert Stimuli"
+
+define sketchpad blank4
+	set duration 2
+	set description "Präsentiert Stimuli"
+
+define sketchpad blank5
+	set duration 2
+	set description "Präsentiert Stimuli"
+
+define sketchpad blank6
+	set duration 2
+	set description "Präsentiert Stimuli"
+
+define inline_script custom_logfile
+	set description "Executes Python code"
+	___run__
+	#########################################
+	### How to set up the custom log file ###
+	#########################################
+	
+	# There are two variables we want to log: The question number and the answer
+	
+	# first we set the question number for this trial
+	counter = int(exp.get("count_loop_sequence"))+1
+	# "count_loop_sequence" is automatically created (you can check it in the variable assistant). It counts the  rounds of loop_example. Therefore this is the perfect variable to get the number of the current question from
+	# With "counter = " we save thie loop count in the new variable "counter"
+	# since python always starts counting with a zero (but we want the first question to be called q1), we turn the variable counter into an integer (by "int()") and add 1 to it. 
+	
+	# now we want to turn this counter into a variable name:
+	naming = "q" + str(counter) 
+	# this creates a variable named of "q" and the counter which we turn back into a string
+	
+	#last but not least we set both, question name and answer as variables
+	exp.set("question", naming) 
+	# with this line of code we set up a variable named "question", whose value is the current value of the naming variable
+	exp.set("answer", exp.get("cursor_roi")) 
+	# with this line of code we set up a variable named "answer", whose value is the variable the participant clicked on recently
+	
+	#now we save all the variables we want to log in a list:
+	var1 = "question"
+	var2 = "answer"
+	loglist = [var1, var2]
+	 
+	#and finally write our list of variables we want to log every round to the loglist. Done!
+	log.write_vars(var_list=loglist)
+	__end__
+	set _prepare ""
+
+define inline_script custom_logfile_preliminaries
+	set description "Executes Python code"
+	___run__
+	#####################################
+	### make the custom logfile ready ###
+	#####################################
+	
+	# close the existing logfile:
+	log.close() 
+	
+	# specify variables for the naming of the new logfile:
+	sn = exp.get("subject_nr")
+	# since we want to include the subject number in the name of our new logfile, we need to extract this information by exp.get
+	# The subject number (we typed in right before the experiment started) is now saved as a variable sn
+	
+	condition = exp.get("condition")
+	# while running the experiment, we type in the experimental condition of the current subject (exp = experimental group, hc = healthy control; more on this in define_condition). To get this the value of this variable we save it in a global variable "condition" (white font)
+	
+	# creatw the new logfile
+	log.open('loop_'+str(condition)+'_'+str(sn)+'.csv') 
+	# finally we are able to create our very own log file. This is done by log.open, followed by the infos which are written to the file's name.	
+	# 1. We name the experiment; "loop_"
+	# 2. Then we add the condition as a string*
+	# 3. Then we add an underscore _
+	# 4. Then we add the value of sn as a string*
+	# 5. Then we add the .csv ending
+	# *strings are a sequence of signs (e.g. in comparison to integers) 
+			
+	# The output file then e.g. is named "loop_hc_002.csv"
+	__end__
+	set _prepare ""
+
+define form_text_input define_condition
+	set timeout infinite
+	set spacing 10
+	set rows "1;1;6"
+	set only_render no
+	set margins "50;50;50;50"
+	set form_var condition
+	set form_title "Study management:"
+	__form_question__
+	Type in the condition (exp / hc):
+	(in this item we are basically creating a variable which we will add to the name of a custom file name later)
+	__end__
+	set description "A simple text input form"
+	set cols 1
+	set _theme gray
+	widget 0 0 1 1 label text="[form_title]"
+	widget 0 1 1 1 label center=no text="[form_question]"
+	widget 0 2 1 1 text_input focus=yes return_accepts=yes stub="" var="[form_var]"
+
+
+define inline_script define_loop_out
+	set description "Executes Python code"
+	___run__
+	######################################
+	### setting up some more variables ###
+	######################################
+	
+	# as already explained in the GENERAL_INFO, we wanted to prohibit the experiment from jumping to the next item after the participant clicked on the white background (and so force him to choose an answer) therefore we created a security sequence which repeats the whole item over and over, until the subject clicks on one of the possible responses.
+	# For this we need a variable that detects whether the subject has clicked on a valid answer already:
+	exp.set("out", 0)
+	# the variable "out" is created and set to 0.
+	
+	# later in the security_check we check whether the participant clicked on one of the responses already. if he or she did, we turn this variable to 1 
+	# in the options of the next item security_loop it is stated, that the loop should be left as soon as this variable turns to 1: [out]==1
+	__end__
+	set _prepare ""
+
+define sequence dependency_and_preselection
+	set flush_keyboard yes
+	set description "Führt mehrere Items nacheinander aus"
+	run question_14a always
+	run question_14b "[q14a]!=0"
+
+define inline_script disclaimer
+	set description "Executes Python code"
+	___run__
+	##################
+	### DISCLAIMER ###
+	##################
+	# The following template on a palette of ways of how to display questionnaires or simple experiments in OpenSesame was created by NF during an internship. As a Swiss psychology student, I am neither a professional coder nor is English my mother tongue.
+	# Therefore the following experiment sequence might not conform the most efficient or the most elegant ways of coding and handling OpenSesame and there probably will be clerical mistakes. 
+	# Also, since I worked with the German version of OpenSesame, some functions of the program are loose translations and might not represent the terms in the English version of the Software.
+	
+	# In case of questions, corrections, critique or comments, please write an e-mail to frini95[at]hotmail[dot]ch
+	__end__
+	set _prepare ""
+
+define sequence experiment_sequence
+	set flush_keyboard yes
+	set description "Runs a number of items in sequence"
+	run disclaimer always
+	run GENERAL_INFO always
+	run logged_info always
+	run instructions always
+	run blank always
+	run open_question always
+	run blank1 always
+	run a_simple_form always
+	run blank2 always
+	run recode_answers always
+	run blank3 always
+	run another_form always
+	run blank4 always
+	run another_form2 always
+	run blank5 always
+	run slider always
+	run blank6 always
+	run dependency_and_preselection always
+	run logger always
+	run define_condition always
+	run custom_logfile_preliminaries always
+	run loop_example always
+	run logclose always
+	run End always
+
+define form_text_display instructions
+	set timeout infinite
+	set spacing 10
+	set rows "1;4;1"
+	set only_render no
+	set ok_text Next
+	set margins "50;50;50;50"
+	set form_title "<b>Instructions</b>"
+	__form_text__
+	Simply type in your instructions here.
+	A  title and the text on your "OK"-button has to be set above this field.
+	
+	Hint: <b>Like this, you can write bold text!</b>
+	__end__
+	set description "A simple text display form"
+	set cols "1;1;1"
+	set _theme gray
+	widget 0 0 3 1 label text="[form_title]"
+	widget 0 1 3 1 label center=no text="[form_text]"
+	widget 1 2 1 1 button text="[ok_text]"
+
+
+define inline_script logclose
+	set description "Executes Python code"
+	___run__
+	#####################################################
+	### Don't forget to close your custom logfile! ;) ###
+	#####################################################
+	
+	log.close()
+	__end__
+	set _prepare ""
+
+define inline_script logged_info
+	set description "Executes Python code"
+	___run__
+	########################################################################
+	###setting up extra variables to add to your log file (very optional ###
+	########################################################################
+	
+	exp.set("questionnaire", "sample")
+	exp.set("subject_number", exp.get("subject_nr"))
+	# with exp.set we create a new variable. 
+	# the variable names in this case are "questionnaire" and "subject_number". (You can choose any)
+	# the code behind the coma represents the value of the the variable; the variable "questionnaire" therefore contains the string "sample"
+	# the variable "subject_number" contains the subject number already typed in by the subject (or test management). This  variable is obtained by the command "exp.get"
+			
+	# don't forget to add the variables "questionnaire" and "subject_number" to your logfile! (as with all variables of your experiment you'd like to get written to your output file. 
+	__end__
+	set _prepare ""
+
+define logger logger
+	set description "Registriert experimentelle Daten"
+	set auto_log no
+	log questionnaire
+	log subject_number
+	log q01
+	log q02
+	log q03
+	log q04
+	log q05
+	log q06
+	log q07
+	log q_open
+	log q08
+	log q09
+	log q10
+	log q11
+	log q12
+	log q13
+	log q14a
+	log q14b
+
+define sequence loop2_sequence
+	set flush_keyboard yes
+	set description "Führt mehrere Items nacheinander aus"
+	run words_display always
+	run new_mouse_response always
+	run security_check always
+
+define loop loop_example
+	set source_file ""
+	set source table
+	set repeat 1
+	set order sequential
+	set description "Führt wiederholt ein anderes Item aus"
+	set cycles 4
+	set continuous no
+	set break_if_on_first yes
+	set break_if never
+	setcycle 0 word1 cat
+	setcycle 0 word2 elephant
+	setcycle 0 word3 dolphin
+	setcycle 0 word4 dog
+	setcycle 0 word5 walrus
+	setcycle 1 word1 banana
+	setcycle 1 word2 orange
+	setcycle 1 word3 pineapple
+	setcycle 1 word4 apple
+	setcycle 1 word5 plum
+	setcycle 2 word1 yellow
+	setcycle 2 word2 green
+	setcycle 2 word3 red
+	setcycle 2 word4 blue
+	setcycle 2 word5 purple
+	setcycle 3 word1 rock
+	setcycle 3 word2 techno
+	setcycle 3 word3 "heavy metal"
+	setcycle 3 word4 pop
+	setcycle 3 word5 jazz
+	run loop_sequence
+
+define sequence loop_sequence
+	set flush_keyboard yes
+	set description "Führt mehrere Items nacheinander aus"
+	run define_loop_out always
+	run security_loop always
+	run custom_logfile always
+
+define mouse_response new_mouse_response
+	set timeout infinite
+	set show_cursor yes
+	set linked_sketchpad words_display
+	set flush yes
+	set event_type mouseclick
+	set duration mouseclick
+	set description "Sammelt Mausreaktionen"
+
+define form_text_input open_question
+	set timeout infinite
+	set spacing 10
+	set rows "1;1;6"
+	set only_render no
+	set margins "50;50;50;50"
+	set form_var q_open
+	set form_title "open question"
+	__form_question__
+	Open questions are as easy as instructions. Just type the question in here and a title in the field above. 
+	Maybe you also want to point out to your participant that he or she has to press enter to save the answer.
+	
+	Don't forget to set a unique name for the response variable! If you want to get it logged, make sure you add the variable to your logger (in case you don't log all the available variables anyways).
+	
+	If time is limited, you can fill in the timeout field with a value in milliseconds. Default is "infinite" for no timeout.
+	
+	As you can see when you run this script, the text in here should not be too long, otherwise it overlays the field where the participant should answer the question in. In case you need more space, you can change the font size in the first item "Form template".
+	__end__
+	set description "A simple text input form"
+	set cols 1
+	set _theme gray
+	widget 0 0 1 1 label text="[form_title]"
+	widget 0 1 1 1 label center=no text="[form_question]"
+	widget 0 2 1 1 text_input focus=yes return_accepts=yes stub="" var="[form_var]"
+
+
+define inline_script question_14a
+	set description "Executes Python code"
+	___run__
+	###################################################
+	### dependency and preselection: first question ###
+	###################################################
+	
+	# This is the first question of the dependency_and_preselection sequence. The overall topic of this sequence is discussed in GENERAL_INFO under dependency_and_preselection.
+	
+	
+	
+	# As usually, we start with the definition of the validator function. Details are explained in a_simple_form.
+	def form_validator():
+		options = [0,1,2,3]
+		return var.q14a in options
+		
+	# Then we set up the text elements, details are again explained in a_simple_form.
+	title = Label(text=u'<b>If you choose "never", a second question on this topic will be skipped. Else it is going to be displayed.</b>')
+	
+	q1 = Label(text=u'How often have you participated in a psychological study before?', center=False)
+	
+	ratingScale = RatingScale(
+		var=u'q14a',
+		nodes=[u'never', u'1-5 times', u'5-10 times', u'more than 10 times']
+	)
+	
+	# Setting up the next button (details in a_simple_form)
+	nextButton = Button(text=u'Weiter')
+	
+	# and finally we set up the form, fill in the widgets and execute! (details are explained in a_simple_form)
+	form = Form(validator=form_validator, rows=[1,2,2,1], cols=[4,7], margins=(10,40,10,40), spacing=25) 
+	
+	form.set_widget(title, (0, 0), colspan = 2)
+	form.set_widget(q1, (0, 1)) 
+	form.set_widget(ratingScale, (1, 1))
+	form.set_widget(nextButton, (0, 3), colspan=2)
+	form._exec()
+	__end__
+	set _prepare ""
+
+define inline_script question_14b
+	set description "Executes Python code"
+	___run__
+	####################################################
+	### dependency and preselection: second question ###
+	####################################################
+	
+	# Since we didn't put a sketchpad in between 14a and 14b, it'll look as if 14b was added to the screen on which the participant answered question_14a. Therefore we need to set up the first question again in the exact same way and add question 14b underneath. 
+	
+	
+	
+	# Again, we start with the definition of the validator function. Details are explained in a_simple_form.
+	def form_validator(): 
+		options = [0,1,2,3]
+		return var.q14b in options
+	
+	# Then we set up the text elements, details are again explained in a_simple_form.
+	title = Label(text=u'<b>If you choose "never", a second question on this topic will be skipped. Else it is going to be displayed.</b>')
+	
+	
+	q1 = Label(text=u'How often have you participated in a psychological study before?', center=False)	
+	#note: question 1 is displayed one more time!
+	q2 = Label(text=u'How much do you usually enjoy it?', center=False)
+	
+	# Now with the ratingscales, everything is the same as usually. EXCEPT we will use a default in the first question which preselects the already answered node.
+		# Big up to Eduard on the OpenSesame forum who helped me with this!
+	ratingScale1 = RatingScale(
+		var=u'q14a',
+		nodes=[u'never', u'1-5 times', u'5-10 times', u'more than 10 times'],
+		default = var.q14a # preselects the already given answer to question 01
+		)
+	ratingScale2 = RatingScale(
+		var=u'q14b',
+		nodes=[u'not at all', u'a bit', u'a lot', u'there is nothing I enjoy more!']
+	)
+	
+	# This is the whole magic, the rest is setting up the next button and a form as we learned it in a_simple_form
+	nextButton = Button(text=u'Weiter')
+	
+	
+	form = Form(validator=form_validator, rows=[1,2,2,1], cols=[4,7], margins=(10,40,10,40), spacing=25) 
+	
+	form.set_widget(title, (0, 0), colspan=2)
+	form.set_widget(q1, (0, 1)) 
+	form.set_widget(ratingScale1, (1, 1))
+	form.set_widget(q2, (0, 2)) 
+	form.set_widget(ratingScale2, (1, 2))
+	form.set_widget(nextButton, (0, 3), colspan=2)
+	form._exec()
+	__end__
+	set _prepare ""
+
+define inline_script recode_answers
+	set description "Executes Python code"
+	___run__
+	################################################################
+	### this is a simple form with a recoder for an inverse item ###
+	################################################################
+	
+	#Caution! This form will only work if the participant has chosen an answer. If you want to avoid that the form crashes, you have to add a validator (more info in a_simple_form)
+	
+	# Let's start with the form. as for the form validator in a_simple_form, we first set up our function
+	def recode_response(r):
+		original_response = self.get(r)
+		response_codes = {
+			0 : 3,
+			1 : 2,
+			2 : 1,
+			3 : 0}
+		exp.set(str(r), response_codes[original_response])
+		return(r)
+	# in this example we have an inverse item that we want to log correctly.
+	# so the first answer should be logged with a 3 instead of a zero, the second one with a 2 instead of a 1 and so on
+	# don't worry about the first three lines of code. You don't havee to change anything there. Just for explanation:
+	# -"def recode_response(r):" defines names the function "recode_response". The r stands for the element that is given to the function to work with, in our case it's the answer to a question
+	# -"original_response = self.get(r)" gets the experimental variable (answer to our queestion) and saves it as "original_response"
+	# -"response_codes = {}" makes a dictionairy, with which we will translate the original responses to the desired one
+	
+	# what you might want to change are the purple numbers. the first column of numbers are the values logged per default (always starting with a 0 and then counting for each answer option).
+	# the second column of numbers are the numbers you would like to have logged instead
+	# of course, if you have only 3 answer options, you would cut the last row or if you have 6 answer options, you would add 2 rows and so on. 
+	
+	# you don't need to mind about the last two lines of code too, but I will anyways explain their meaning:
+	# -"exp.set(str(r), response_codes[original_response]) now actually takes the value of the original response and translates it to the desired one. This is then safed as an experimental variable "r"
+	#return (r) returns the recoded variable "r" back
+	
+	# This function needs be called for every question you would like to recode. We will discuss this at the end of this script
+	
+	# set up the form elements and the form (as explained in a_simple_form)
+	title = Label(text=u'title')
+	
+	q1 = Label(text=u'This is an inverted item', center=False)
+	q2 = Label(text=u'This is a normal item', center=False)
+	
+	ratingScale1 = RatingScale(
+		var=u'q05',
+		nodes=[u'never', u'sometimes', u'often', u'nearly always'],
+		)
+	ratingScale2 = RatingScale(
+		var=u'q06',
+		nodes=[u'never', u'sometimes', u'often', u'nearly always']
+		)
+	
+	nextButton = Button(text=u'next')
+	
+	form = Form(rows=[1,1,1,1], cols=[4,7], margins=(10,40,10,40), spacing=25) 
+	
+	form.set_widget(title, (0, 0), colspan=2)
+	form.set_widget(q1, (0, 1)) 
+	form.set_widget(q2, (0, 2)) 
+	form.set_widget(ratingScale1, (1, 1))
+	form.set_widget(ratingScale2, (1, 2))
+	form.set_widget(nextButton, (0, 3), colspan=2)
+	form._exec()
+	
+	# now call the recode function! 
+	recode_response('q05')
+	# for making the actual recoding happen, we have to feed the corresponding question to the recode_response function. this is done by the line of code above. Just change the yellow variable name to the name of your choice and voilà!
+	# if necessary (e.g. if all the questions for some reason are displayed the other way around), you can of course feed all the questions to the recode_response function. just copy paste the line and change the name to another question you want to recode. Or if you are an advanced python user, just use a loop and iterate through all the variables!
+	# don't forget to write the names of the variables to your logger too
+	__end__
+	set _prepare ""
+
+define inline_script security_check
+	set description "Executes Python code"
+	___run__
+	#######################################################
+	### checking whether we can leave the security loop ###
+	#######################################################
+	
+	# as already explained in general_info and define_loop_out, we decided to add something like a validator to our loop which checks whether the participant has really clicked on one of the desired answers.
+	
+	# first we define the valide answers as options. since answers on sketchpads are named with letters instead of numbers, and since there are 5 possible answers, the options in our example are 'a', 'b', 'c', 'd' and 'e'
+	options = ['a','b','c','d','e']
+	
+	# with a so called "if-statement" we now set the variable "out" to 1, if one of the options has been clicked on by the participant
+	if var.cursor_roi in options: 
+		# var.cursor_roi gets the value the participant clicked on
+		# "in" checks whether the value of the cursor is in options (checks whether something has been clicked on)
+		exp.set("out", 1)
+		# IF the value of the cursor is in the options, we set the variable "out" to 1
+		# this leads to the end of the security_loop (more information: check security_loop in GENERAL_INFO)
+	__end__
+	set _prepare ""
+
+define loop security_loop
+	set source_file ""
+	set source table
+	set repeat 300
+	set order random
+	set description "Führt wiederholt ein anderes Item aus"
+	set cycles 1
+	set continuous no
+	set break_if_on_first no
+	set break_if "[out]==1"
+	setcycle 0 empty_column ""
+	run loop2_sequence
+
+define inline_script slider
+	set description "Executes Python code"
+	___run__
+	#######################################################
+	### how to set up a slider as a visual analog scale ###
+	#######################################################
+	
+	# disclaimer: since most of the code (and some of the comments!) in this inline script is not created by myself but copied out of a post of sebastiaan in the opensesesame forum, not everything is explained in detail.
+	# link to the corresponding post: https://forum.cogsci.nl/index.php?p=/discussion/40/solved-implementing-a-slider
+	
+	
+	# for creating a slider, we have to work with a canvas instead of a grid of widgets (compared to "a_simple_form" and following)
+	from openexp.canvas import canvas
+	from openexp.mouse import mouse
+	my_canvas = canvas(self.experiment)
+	my_mouse = mouse(self.experiment, timeout=20)
+	# learn more about canvas' on https://osdoc.cogsci.nl/3.2/manual/python/canvas/
+	# with the commands above, we basically create a mouse and a canvas
+	
+	# then we set the slider dimensions
+	slider_w = 500
+	slider_h = 50
+	# slider_w = slider width
+	# slider_h = slider height
+	
+	# determine the position of the slider relative to the width/2 and height/2 (=>relative to the center)
+	slider_x = -slider_w/2
+	slider_y = -slider_h/2
+	
+	# within a while loop, we create the slider and make it responsive to the mouse. Especially important to you are the yellow texts, since you surely want to change them
+	while True:
+		
+	# Determine the slider fill based on the mouse position:
+		pos, time = my_mouse.get_pos()
+		x, y = pos
+		slider_fill = min(slider_w, max(0, x-slider_x))
+	
+		my_canvas.clear()
+		
+		# Draw some text:
+		my_canvas.text(u'<b>I feel good today</b>', y=slider_y-100) 	#the item
+		my_canvas.text(u'click to save your answer', y=slider_y+200) 	#instructions
+		my_canvas.text(u'I strongly disagree', x=slider_x-100)			#left label of the slider
+		my_canvas.text(u'I strongly agree', x=slider_x+635)				#right label of the slider
+		# Sometimes one needs to play around a bit with the purple numbers, which are responsible for the
+		# positioning of the text (depending on the length of the text)
+			
+		# Draw the slider 
+		my_canvas.rect(slider_x, slider_y, slider_w, slider_h) 					#frame
+		my_canvas.rect(slider_x, slider_y, slider_fill, slider_h, fill=True)	#fill                
+		
+		# Draw the mouse cursor
+		my_canvas.arrow(x, y+40, x, y)
+		my_canvas.show()
+	
+		# Poll the mouse for buttonclicks
+		button, position, timestamp = my_mouse.get_click(timeout = 20)
+		if button != None:
+			break
+	
+	## Set the slider response as an experimental variable
+	var.q13 = 100.0*slider_fill/slider_w   
+	# here we set the variable we want to log. You can use any variable name behind "var."
+	# don't forget to add it to your logfile!
+	__end__
+	set _prepare ""
+
+define sketchpad words_display
+	set duration 0
+	set description "Präsentiert Stimuli"
+	draw textline center=1 color=black font_bold=yes font_family=sans font_italic=no font_size=21 html=yes name=a show_if=always text="[word1]" x=-384 y=0 z_index=0
+	draw textline center=1 color=black font_bold=yes font_family=sans font_italic=no font_size=21 html=yes name=b show_if=always text="[word2]" x=-192 y=0 z_index=0
+	draw textline center=1 color=black font_bold=yes font_family=sans font_italic=no font_size=21 html=yes name=c show_if=always text="[word3]" x=0 y=0 z_index=0
+	draw textline center=1 color=black font_bold=yes font_family=sans font_italic=no font_size=21 html=yes name=d show_if=always text="[word4]" x=192 y=0 z_index=0
+	draw textline center=1 color=black font_bold=yes font_family=sans font_italic=no font_size=21 html=yes name=e show_if=always text="[word5]" x=384 y=0 z_index=0
+	draw textline center=1 color=black font_bold=no font_family=sans font_italic=no font_size=20 html=yes show_if=always text="Choose your favourite!" x=0 y=-192 z_index=0
+
